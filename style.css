@@ -3,19 +3,33 @@
   padding: 0;
 }
 
-.container {
+.gridContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 200px;
+  margin: 50px;
+  width: 960px;
+  padding: 10px;
+}
+
+input {
+  align-self: center;
 }
 
 .grid-item {
   margin: 1px;
-  padding: 5px;
-  background-color: grey;
+  padding: 28px;
+  background-color: rgb(187, 187, 187);
 }
 
 .gridItemHover {
-  background-color: blue;
+  background-color: lightblue;
+}
+
+.resetBtn {
+  margin: 10px;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: lightblue;
 }

@@ -1,4 +1,4 @@
-const container = document.querySelector(".container");
+const container = document.querySelector(".gridContainer");
 createGrid();
 function createGrid() {
   for (let i = 0; i < 16 * 16; i++) {
@@ -14,5 +14,13 @@ const gridItems = document.querySelectorAll(".grid-item");
 gridItems.forEach((gridItem) => {
   gridItem.addEventListener("mouseover", (event) => {
     gridItem.classList.add("gridItemHover");
+  });
+});
+
+const resetBtn = document.querySelector(".resetBtn");
+
+resetBtn.addEventListener("click", (event) => {
+  gridItems.forEach((gridItem) => {
+    gridItem.classList.remove("gridItemHover");
   });
 });
