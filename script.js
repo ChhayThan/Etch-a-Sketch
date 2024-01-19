@@ -8,3 +8,11 @@ function createGrid() {
     container.appendChild(gridItem);
   }
 }
+
+const gridItems = document.querySelectorAll(".grid-item");
+
+gridItems.forEach((gridItem) => {
+  gridItem.addEventListener("mouseover", (event) => {
+    gridItem.classList.add("gridItemHover");
+  });
+});

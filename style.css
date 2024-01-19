@@ -7,10 +7,15 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 28.5%;
+  width: 200px;
 }
 
 .grid-item {
   margin: 1px;
-  border: 5px solid red;
+  padding: 5px;
+  background-color: grey;
+}
+
+.gridItemHover {
+  background-color: blue;
 }
