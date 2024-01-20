@@ -17,8 +17,10 @@ input {
 }
 
 .grid-item {
+  /*
   margin: 1px;
   padding: 28px;
+  */
   background-color: rgb(187, 187, 187);
 }
 

@@ -1,12 +1,15 @@
 const container = document.querySelector(".gridContainer");
-createGrid();
-function createGrid() {
-  for (let i = 0; i < 16 * 16; i++) {
+const gridValue = document.getElementById("gridRange").value;
+createGrid(gridValue);
+function createGrid(size) {
+  let side = size * size;
+  for (let i = 0; i < side; i++) {
     const gridItem = document.createElement("div");
     gridItem.classList.add("grid-item");
 
     container.appendChild(gridItem);
   }
+  gridSizing(size);
 }
 
 const gridItems = document.querySelectorAll(".grid-item");
@@ -24,3 +27,17 @@ resetBtn.addEventListener("click", (event) => {
     gridItem.classList.remove("gridItemHover");
   });
 });
+
+function gridSizing(size) {
+  let containerWidth = 960;
+  let containerHeight = containerWidth;
+  let gridWidth = containerWidth / size;
+  let gridHeight = containerHeight / size;
+  const gridItems = document.querySelectorAll(".grid-item");
+  gridItems.forEach((gridItem) => {
+    gridItem.setAttribute(
+      "style",
+      `width:${gridWidth}px;height:${gridHeight}px;`
+    );
+  });
+}
