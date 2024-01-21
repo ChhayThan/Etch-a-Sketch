@@ -1,6 +1,8 @@
 const container = document.querySelector(".gridContainer");
 const gridValue = document.getElementById("gridRange").value;
-createGrid(gridValue);
+const sizeInfo = document.querySelector(".sizeInfo");
+sizeInfo.textContent = `Grid Size: ${gridValue}`;
+
 function createGrid(size) {
   let side = size * size;
   for (let i = 0; i < side; i++) {
@@ -10,22 +12,50 @@ function createGrid(size) {
     container.appendChild(gridItem);
   }
   gridSizing(size);
+  AddHoverEffect();
 }
 
-const gridItems = document.querySelectorAll(".grid-item");
+createGrid(gridValue);
 
-gridItems.forEach((gridItem) => {
-  gridItem.addEventListener("mouseover", (event) => {
-    gridItem.classList.add("gridItemHover");
+function updateGrid(size) {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+  let side = size * size;
+  for (let i = 0; i < side; i++) {
+    const gridItem = document.createElement("div");
+    gridItem.classList.add("grid-item");
+
+    container.appendChild(gridItem);
+  }
+  gridSizing(size);
+  AddHoverEffect();
+  sizeInfo.textContent = `Grid Size:${size}`;
+}
+
+function AddHoverEffect() {
+  const gridItems = document.querySelectorAll(".grid-item");
+
+  gridItems.forEach((gridItem) => {
+    gridItem.addEventListener("mouseenter", (event) => {
+      gridItem.classList.add("gridItemHover");
+    });
   });
-});
+}
 
+function resetGrid() {
+  const gridItems = document.querySelectorAll(".grid-item");
+  gridItems.forEach((gridItem) => {
+    const gridItems = document.querySelectorAll(".grid-item");
+    gridItem.classList.remove("gridItemHover");
+  });
+}
+
+AddHoverEffect();
 const resetBtn = document.querySelector(".resetBtn");
 
 resetBtn.addEventListener("click", (event) => {
-  gridItems.forEach((gridItem) => {
-    gridItem.classList.remove("gridItemHover");
-  });
+  resetGrid();
 });
 
 function gridSizing(size) {
